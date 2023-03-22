@@ -25,6 +25,15 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_USER: ${DATABASE_USER}
+  user_interface:
+    build:
+      dockerfile: ../user_interface/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../user_interface:/usr/src/user_interface
+    environment:
+      VITE_API_URL: ${VITE_API_URL}
   db:
     image: postgres:14.0
     ports:
@@ -36,10 +45,3 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
     volumes:
       - ./volumes/.dbdata:/var/lib/postgresql/data/pgdata
-  # frontend:
-  #   build:
-  #     dockerfile: ../frontend/Dockerfile
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ../frontend:/usr/src/frontend

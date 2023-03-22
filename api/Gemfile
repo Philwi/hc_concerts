@@ -38,6 +38,7 @@ gem "bootsnap", require: false
 
 gem "graphql"
 gem "graphiql-rails"
+gem "rack-cors"
 
 # dry-rb
 gem "dry-monads"
