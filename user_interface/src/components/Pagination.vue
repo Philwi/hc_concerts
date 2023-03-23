@@ -5,9 +5,9 @@
     @click="currentPage--"
     class="bg-yellow-300 hover:bg-yellow-400 text-yellow-800 font-bold py-2 px-4 rounded-l"
   )
-    // previous utf-8 character: ←
     | ←
   button(
+    v-show="pages > 1"
     v-for="page in pages"
     @click="currentPage = page"
     :class="{'bg-yellow-400': currentPage === page}"

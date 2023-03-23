@@ -36,8 +36,9 @@ export const useConcertsStore = defineStore('concert', {
         })
       } else {
         this.filtered = this.concerts
-        this.paginate(1)
       }
+
+      this.paginate(1)
     },
     paginate(page: number) {
       const perPage = 10

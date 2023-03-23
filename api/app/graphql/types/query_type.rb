@@ -8,7 +8,7 @@ module Types
       description: "Returns a list of concerts in the martian concert database"
 
     def concerts
-      Concert.all
+      Concert.where('date >= ?', Date.today)
     end
   end
 end
