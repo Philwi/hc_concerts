@@ -14,7 +14,7 @@ module Types
     field :image, String, null: true
 
     def image
-      Rails.application.routes.url_helpers.rails_blob_url(object.image, only_path: true) if object.image.attached?
+      object.image.url if object.image.attached?
     end
   end
 end

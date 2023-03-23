@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { apolloProvider } from './plugins/graphql/client'
+import { useConcertsStore } from '@/stores'
 
 import App from './App.vue'
 import router from './router'
@@ -11,6 +11,12 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(apolloProvider)
 
 app.mount('#app')
+
+setup()
+
+function setup() {
+  const concerts = useConcertsStore()
+  concerts.queryConcerts()
+}

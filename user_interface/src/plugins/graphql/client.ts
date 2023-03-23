@@ -3,7 +3,7 @@ import { createApolloProvider } from '@vue/apollo-option'
 
 const cache = new InMemoryCache()
 
-const apolloClient = new ApolloClient({
+export const apolloClient = new ApolloClient({
   cache,
   uri: `${import.meta.env.VITE_API_URL}/graphql`,
 })
