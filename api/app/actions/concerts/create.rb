@@ -10,6 +10,7 @@ module Concerts
 
     public
 
+    # rubocop:disable Metrics/ParameterLists
     def initialize(title:, description:, bands:, venue:, city:, date:, price:, image:)
       @title = title
       @description = description
@@ -20,6 +21,7 @@ module Concerts
       @price = price
       @image = image
     end
+    # rubocop:enable Metrics/ParameterLists
 
     def call
       result = validate_params
@@ -41,26 +43,34 @@ module Concerts
 
     def create_concert(input)
       input = input.success
-
-      concert = Concert.new(
-        title: input[:title],
-        description: input[:description],
-        bands: input[:bands],
-        venue: input[:venue],
-        city: input[:city],
-        date: input[:date],
-        price: input[:price]
-      )
-
-      if image
-        concert.image.attach(io: StringIO.new(Base64.decode64(input[:image])), filename: 'image.png', content_type: 'image/png')
-      end
+      concert = create_record(input)
+      concert = add_image_to_concert(concert:, image: input[:image])
 
       if concert.save
         Success(concert:)
       else
         Failure(errors: :concert_not_created)
       end
+    end
+
+    def create_record(input)
+      input = input.success
+
+      Concert.new(
+        title: input[:title],
+        description: input[:description],
+        artist: input[:artist],
+        label: input[:label],
+        release_date: input[:release_date],
+        price: input[:price]
+      )
+    end
+
+    def add_image_to_concert(concert:, image:)
+      return concert unless image
+
+      concert.image.attach(io: StringIO.new(Base64.decode64(image)), filename: 'image.png', content_type: 'image/png')
+      concert
     end
   end
 end

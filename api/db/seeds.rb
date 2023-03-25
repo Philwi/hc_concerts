@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -22,7 +24,8 @@ end
 
 # Add images to the concerts
 Concert.all.each do |concert|
-  image_src = Faker::LoremFlickr.image(size: "300x300", search_terms: ['concert'])
-  image = URI.open(image_src)
+  image_src = Faker::LoremFlickr.image(size: '300x300', search_terms: ['concert'])
+  image = URI.parse(image_src).open
+
   concert.image.attach(io: image, filename: "#{concert.title}.jpg", content_type: 'image/jpg')
 end

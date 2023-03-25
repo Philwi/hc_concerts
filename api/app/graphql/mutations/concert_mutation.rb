@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # sample mutation for creating a concert
 # mutation {
 #  createConcert(
@@ -24,20 +26,16 @@ module Mutations
     field :concert, Types::ConcertType, null: false
     field :errors, [String], null: false
 
+    # rubocop:disable Metrics/ParameterLists
     def resolve(title:, description:, bands:, venue:, city:, date:, price:, image: nil)
-      result = Concerts::Create.new( title:, description:, bands:, venue:, city:, date:, price:, image:).call
+      result = Concerts::Create.new(title:, description:, bands:, venue:, city:, date:, price:, image:).call
 
       if result.success?
-        {
-          concert: result.success[:concert],
-          errors: []
-        }
+        { concert: result.success[:concert], errors: [] }
       else
-        {
-          concert: nil,
-          errors: concert.failure[:errors]
-        }
+        { concert: nil, errors: concert.failure[:errors] }
       end
     end
+    # rubocop:enable Metrics/ParameterLists
   end
 end

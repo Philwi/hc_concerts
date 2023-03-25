@@ -20,9 +20,7 @@ module Concerts
       end
 
       rule(:image).validate do
-        if value
-          key.failure('must be a string') unless value.is_a?(String)
-        end
+        key.failure('must be a string') if value && !value.is_a?(String)
       end
     end
   end
