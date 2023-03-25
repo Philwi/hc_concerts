@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ConcertsPage from '@/views/Concerts.vue'
+import AddConcertPage from '@/views/AddConcert.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'concerts',
       component: ConcertsPage
+    },
+    {
+      path: '/add',
+      name: 'addConcert',
+      component: AddConcertPage
     }
     // {
     //   path: '/',
