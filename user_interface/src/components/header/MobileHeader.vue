@@ -12,7 +12,7 @@ header.bg-yellow-300.min-h-content
         template(v-for="item in navigation")
           li.mr-4.p-4.rounded(:class="{ 'bg-yellow-400': $route.path === item.path }")
             .text-3xl.font-headline.text-center.justify-center
-              RouterLink(:to="item.path") {{ item.name }}
+              RouterLink(:to="item.path" @click="toggleMenu") {{ item.name }}
       hr.m-4.border-black.border(class="border-opacity-50 opacity-50")
       div.text-center
         TheLanguageChooser

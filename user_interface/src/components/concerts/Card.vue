@@ -1,6 +1,6 @@
 <template lang="pug">
-.bg-yellow-300.rounded-lg.h-64.mt-8
-  .flex.justify-space-between.items-center.h-full.text-center
+.bg-yellow-300.rounded-lg.mt-8.p-4(class="xl:h-96")
+  .flex.justify-space-between.items-center.h-full.text-center.flex-col(class="xl:flex-row")
     .flex-1
       .flex.justify-center.items-center.flex-col
         img.h-24.w-24.rounded-full.m-4(:src="concert.image")

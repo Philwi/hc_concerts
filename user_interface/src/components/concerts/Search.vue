@@ -6,10 +6,10 @@
     input.search.border-2.border-gray-300.bg-white.h-10.px-5.pr-16.rounded-lg.text-xl(
       v-model="search" type="text" placeholder="Search for concerts"
     )
-    button.border-2.border-black.bg-yellow-300.h-10.px-5.pr-16.rounded-lg.text-xl.m-2(
+    button.border-2.border-black.bg-yellow-300.h-10.px-5.pr-16.rounded-lg.text-xl.m-2.w-32(
       @click="filterConcerts"
       class="hover:bg-yellow-400 text-black font-bold text-transform: uppercase"
-    ) Suche
+    ) Suchen
 </template>
 
 <script lang="ts">
