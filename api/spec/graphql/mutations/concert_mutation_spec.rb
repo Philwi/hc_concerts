@@ -40,6 +40,7 @@ RSpec.describe Mutations::ConcertMutation, type: :request do
       post '/graphql', params: { query: }
     end
 
+    # TODO: fix host issue in test
     it 'returns a concert' do
       json = JSON.parse(response.body)
       data = json['data']['createConcert']
