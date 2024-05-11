@@ -25,6 +25,13 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_USER: ${DATABASE_USER}
+  concert_scraper:
+    depends_on:
+      - db
+    build:
+      dockerfile: ../concert_scraper/Dockerfile
+    environment:
+      GRAPHQL_URL: ${VITE_API_URL}
   user_interface:
     build:
       dockerfile: ../user_interface/Dockerfile
